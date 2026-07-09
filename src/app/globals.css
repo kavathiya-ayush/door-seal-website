@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ═══════════════════════════════════════════════════════════
+   DOOR SEAL — Professional Design System
+   Brand: Sardar Manufactures | Rajkot, India
+   Palette: Clean White + Slate + Brass/Gold Accents
+   ═══════════════════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Brand Colors ─────────────────────────────── */
+  --color-brand-white: #FFFFFF;
+  --color-brand-offwhite: #F8F9FA;
+  --color-brand-slate-light: #E2E8F0;
+  --color-brand-slate: #64748B;
+  --color-brand-slate-dark: #334155;
+  --color-brand-charcoal: #0F172A;
+  
+  --color-brass: #C9A15C;
+  --color-brass-light: #DFBA7B;
+  --color-brass-dark: #A88B4A;
+  --color-gold: #E8C872;
+
+  /* ── Typography ───────────────────────────────── */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+
+  /* ── Shadows ──────────────────────────────────── */
+  --shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 10px 30px -5px rgba(15, 23, 42, 0.1);
+  --shadow-brass: 0 4px 20px -2px rgba(201, 161, 92, 0.15);
+
+  /* ── Animations ───────────────────────────────── */
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Keyframes ────────────────────────────────── */
+@keyframes shimmer {
+  0%, 100% { background-position: -200% center; }
+  50% { background-position: 200% center; }
+}
+
+/* ── Global Base ──────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-brand-offwhite);
+  color: var(--color-brand-charcoal);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* ── Premium Scrollbar ────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-offwhite);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-slate-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brass);
+}
+
+/* ── Selection ────────────────────────────────── */
+::selection {
+  background: rgba(201, 161, 92, 0.2);
+  color: var(--color-brand-charcoal);
+}
+
+/* ── Utility: Clean Card ──────────────────────── */
+.clean-card {
+  background: var(--color-brand-white);
+  border: 1px solid var(--color-brand-slate-light);
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.3s ease;
+}
+.clean-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(201, 161, 92, 0.3);
+}
+
+/* ── Utility: Text Gradient ───────────────────── */
+.text-gradient-brass {
+  background: linear-gradient(135deg, var(--color-brass-dark), var(--color-brass), var(--color-brass-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Utility: Brass Button Background ─────────── */
+.btn-brass {
+  background: linear-gradient(135deg, var(--color-brass), var(--color-brass-light));
+  color: white;
+  box-shadow: var(--shadow-brass);
+  transition: all 0.3s ease;
+}
+.btn-brass:hover {
+  background: linear-gradient(135deg, var(--color-brass-light), var(--color-brass));
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px -5px rgba(201, 161, 92, 0.3);
 }

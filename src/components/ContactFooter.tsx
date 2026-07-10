@@ -22,7 +22,7 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Business Enquiries",
-    value: "+91 98765 43210",
+    value: "+91 79903 14577",
   },
   {
     icon: Mail,

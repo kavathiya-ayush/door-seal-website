@@ -98,14 +98,14 @@ export default function ProductGrid() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid sm:grid-cols-2 gap-6 lg:gap-8"
+          className="flex sm:grid sm:grid-cols-2 gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory sm:overflow-x-visible pb-8 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 hide-scrollbar"
         >
           {categories.map((cat) => (
             <motion.div
               key={cat.id}
               variants={cardVariants}
               whileTap={{ scale: 0.98 }}
-              className="clean-card rounded-3xl p-8 lg:p-10 flex flex-col group h-full cursor-pointer"
+              className="clean-card rounded-3xl p-8 lg:p-10 flex flex-col group h-full cursor-pointer min-w-[85vw] sm:min-w-0 snap-center sm:snap-align-none"
             >
               {/* Top row: icon */}
               <div className="flex items-start justify-between mb-8">
@@ -119,9 +119,9 @@ export default function ProductGrid() {
                 <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-slate mb-2">
                   {cat.subtitle}
                 </p>
-                <h3 className="text-2xl font-bold font-[var(--font-playfair)] mb-3 text-brand-charcoal group-hover:text-brass transition-colors duration-300">
+                <h2 className="text-2xl font-bold font-[var(--font-playfair)] mb-3 text-brand-charcoal group-hover:text-brass transition-colors duration-300">
                   {cat.title}
-                </h3>
+                </h2>
                 <p className="text-sm text-brand-slate leading-relaxed">
                   {cat.description}
                 </p>

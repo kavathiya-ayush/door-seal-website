@@ -104,3 +104,12 @@ body {
   transform: translateY(-1px);
   box-shadow: 0 8px 25px -5px rgba(201, 161, 92, 0.3);
 }
+
+/* ── Hide Scrollbar Utility ───────────────────── */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

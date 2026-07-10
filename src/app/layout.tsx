@@ -15,26 +15,48 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Door Seal — Premium Door Hardware by Sardar Manufactures | Rajkot",
+  title: "Door Seal by Sardar Manufactures | Premium Hardware in Rajkot",
   description:
-    "India's first lock brand offering lifetime guarantee. Premium brass mortise handles, hydraulic floor springs, and aluminium section hardware. Manufactured in Rajkot. Trusted by architects and wholesalers nationwide.",
+    "Rajkot's premier manufacturer of Door Seal brand hardware. Specialized in premium brass mortise locks, hydraulic floor springs, and aluminium section hardware. Trusted by India's top architects.",
   keywords: [
-    "door hardware",
-    "mortise locks",
-    "floor springs",
-    "brass handles",
-    "Rajkot manufacturer",
-    "B2B hardware",
+    "Door Seal Rajkot",
     "Door Seal",
     "Sardar Manufactures",
+    "mortise locks Rajkot",
+    "hydraulic floor springs",
+    "hardware manufacturer Rajkot",
+    "premium door hardware",
   ],
   openGraph: {
-    title: "Door Seal — Premium Door Hardware",
+    title: "Door Seal by Sardar Manufactures | Premium Hardware in Rajkot",
     description:
-      "India's first lock brand offering lifetime guarantee. Premium hardware for architects & wholesalers.",
+      "Rajkot's premier manufacturer of Door Seal brand hardware. Specialized in premium brass mortise locks and hydraulic floor springs.",
     type: "website",
     locale: "en_IN",
+    siteName: "Door Seal - Sardar Manufactures",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ManufacturingBusiness",
+  "name": "Sardar Manufactures",
+  "alternateName": "Door Seal",
+  "description": "Premium hardware manufacturer specializing in brass mortise locks and hydraulic floor springs.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "30, Samrat Industrial Area Main Rd, Ambedkar Nagar, Samrat Industrial Area",
+    "addressLocality": "Rajkot",
+    "addressRegion": "Gujarat",
+    "postalCode": "360004",
+    "addressCountry": "IN"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "19"
+  },
+  "keywords": "Door Seal Rajkot, Door Seal, hardware manufacturer"
 };
 
 export default function RootLayout({
@@ -48,6 +70,10 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-brand-offwhite text-brand-charcoal">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

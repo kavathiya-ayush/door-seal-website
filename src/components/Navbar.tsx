@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Mail, Shield } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import MapModal from "./MapModal";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
@@ -14,9 +15,10 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMapOpen, setIsMapOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -24,30 +26,33 @@ export default function Navbar() {
   return (
     <>
       {/* ── Top Info Bar ───────────────────────── */}
-      <div className="fixed top-0 left-0 right-0 z-[60] h-10 flex items-center justify-center gap-6 bg-brand-charcoal text-xs text-brand-offwhite">
+      <div className="absolute top-0 left-0 right-0 z-[60] h-10 flex items-center justify-center gap-6 bg-brand-charcoal text-xs text-brand-offwhite">
         <span className="flex items-center gap-1.5">
           <Phone size={12} className="text-brass" />
-          +91 98765 43210
+          +91 79903 14577
         </span>
         <span className="hidden sm:flex items-center gap-1.5">
           <Mail size={12} className="text-brass" />
           info@doorseal.in
         </span>
-        <span className="hidden md:flex items-center gap-1.5">
-          <Shield size={12} className="text-brass" />
-          Lifetime Guarantee on All Products
-        </span>
+        <button 
+          onClick={() => setIsMapOpen(true)}
+          className="hidden lg:flex items-center gap-1.5 hover:text-brass transition-colors cursor-pointer"
+        >
+          <MapPin size={12} className="text-brass" />
+          Samrat Industrial Area, Rajkot
+        </button>
       </div>
 
-      {/* ── Main Navbar ───────────────────────── */}
+      {/* ── Main Navbar (Sticky) ───────────────────────── */}
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-50 mt-10 transition-colors duration-300 ${
           scrolled
-            ? "top-0 bg-brand-white/95 backdrop-blur-md shadow-sm border-b border-brand-slate-light"
-            : "top-10 bg-brand-white border-b border-brand-slate-light"
+            ? "bg-brand-white/95 backdrop-blur-md shadow-sm border-b border-brand-slate-light"
+            : "bg-brand-white border-b border-brand-slate-light"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,6 +146,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <MapModal isOpen={isMapOpen} onClose={() => setIsMapOpen(false)} />
     </>
   );
 }

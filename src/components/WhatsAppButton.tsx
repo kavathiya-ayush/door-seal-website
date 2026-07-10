@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
-const WHATSAPP_NUMBER = "919876543210"; // Replace with actual number
+const WHATSAPP_NUMBER = "917990314577";
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hello! I'm interested in Door Seal products. Could you share your B2B catalog and pricing?"
 );
@@ -66,8 +67,8 @@ export default function WhatsAppButton() {
         {/* Background */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] transition-transform duration-300" />
         {/* Icon */}
-        <MessageCircle
-          size={28}
+        <WhatsAppIcon
+          size={32}
           className="relative text-white fill-white"
         />
       </motion.a>
